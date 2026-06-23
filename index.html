@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Aligned Wheel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --color-primary: #DCA54A;
+        --color-primary-hover: #D09A40;
+      }
+      
+      body {
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        background-color: #f8fafc;
+        margin: 0;
+        color: #1e293b;
+        -webkit-font-smoothing: antialiased;
+      }
+      
+      h1 { font-family: 'Inter', sans-serif !important; font-size: 60px !important; line-height: 1.1; font-weight: 300; }
+      h2 { font-family: 'Inter', sans-serif !important; font-size: 40px !important; line-height: 1.2; font-weight: 300; }
+      h3 { font-family: 'Inter', sans-serif !important; font-size: 21px !important; line-height: 1.3; font-weight: 500; }
+
+      .btn-primary {
+        background-color: var(--color-primary);
+        color: #FFFFFF;
+        font-size: 15px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        border-radius: 9999px;
+        border: none;
+        cursor: pointer;
+        padding: 18px 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+      .btn-primary:hover {
+        background-color: var(--color-primary-hover);
+        transform: translateY(-1px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Custom Slider Styles */
+      input[type=range] {
+        -webkit-appearance: none; 
+        appearance: none;
+        background: transparent; 
+        cursor: pointer;
+      }
+      input[type=range]:focus { outline: none; }
+      input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 20px; width: 20px; border-radius: 50%;
+        background: currentColor; border: 3px solid #ffffff;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        margin-top: -6px; transition: transform 0.1s;
+      }
+      input[type=range]:active::-webkit-slider-thumb { transform: scale(1.1); }
+      input[type=range]::-moz-range-thumb {
+        height: 20px; width: 20px; border-radius: 50%;
+        background: currentColor; border: 3px solid #ffffff;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      }
+
+      /* App Loader */
+      #app-init-loader {
+        position: fixed;
+        inset: 0;
+        background: #f8fafc;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease;
+      }
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid #e2e8f0;
+        border-top-color: var(--color-primary);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+
+      .no-print { display: block; }
+      .print-only { display: none !important; }
+
+      @media print {
+        @page { margin: 0.5in; size: auto; }
+        html, body, #aligned-wheel-root { height: auto !important; overflow: visible !important; display: block !important; }
+        body { background-color: white !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .no-print { display: none !important; }
+        .print-only { display: block !important; }
+        .shadow-sm, .shadow-md, .shadow-xl { box-shadow: none !important; border: 1px solid #e2e8f0 !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app-init-loader">
+      <div class="spinner"></div>
+      <p style="font-family: 'Inter', sans-serif; font-size: 14px; color: #64748b; letter-spacing: 0.05em;">THE ALIGNED WHEEL</p>
+    </div>
+    <div id="aligned-wheel-root"></div>
+    <script type="module" src="/index.tsx"></script>
+    <script>
+      // Remove loader once React starts
+      window.addEventListener('load', () => {
+        const loader = document.getElementById('app-init-loader');
+        if (loader) {
+          setTimeout(() => {
+            loader.style.opacity = '0';
+            setTimeout(() => loader.remove(), 500);
+          }, 300);
+        }
+      });
+    </script>
+  </body>
+</html>
