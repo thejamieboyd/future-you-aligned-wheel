@@ -7,35 +7,95 @@
     <title>The Aligned Wheel</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                bg: '#FDFBF7',
+                text: '#1A1A1A',
+                accent: '#4A90C4',
+                'accent-hover': '#3A7AB0',
+                'accent-light': '#F0F6FA',
+                border: '#C8DFF0',
+              },
+              slate: {
+                50: '#FDFBF7',
+                100: '#C8DFF0',
+                150: '#C8DFF0',
+                200: '#C8DFF0',
+                300: '#C8DFF0',
+                400: '#5C6670',
+                500: '#5C6670',
+                600: '#5C6670',
+                700: '#1A1A1A',
+                800: '#1A1A1A',
+                900: '#1A1A1A',
+              },
+              emerald: {
+                50: '#F4FAF9',
+                100: '#E6F5F2',
+                500: '#2A9D8F',
+                600: '#2A9D8F',
+                700: '#1E6D63',
+                800: '#17544C',
+              },
+              amber: {
+                50: '#FCF8EF',
+                100: '#FAF1DF',
+                500: '#C4952A',
+                600: '#C4952A',
+                700: '#8F6D1F',
+                800: '#664E16',
+              },
+              orange: {
+                50: '#FDF4F5',
+                100: '#FCE8EC',
+                500: '#D4587A',
+                600: '#D4587A',
+                800: '#943B53',
+              },
+              violet: {
+                50: '#F6F4FA',
+                500: '#7B5EA7',
+                600: '#7B5EA7',
+                800: '#564275',
+              }
+            }
+          }
+        }
+      }
+    </script>
     <style>
       :root {
-        --color-primary: #DCA54A;
-        --color-primary-hover: #D09A40;
+        --color-primary: #4A90C4;
+        --color-primary-hover: #3A7AB0;
       }
       
       body {
-        font-family: 'Poppins', sans-serif;
+        font-family: 'Inter', sans-serif;
         font-size: 16px;
         font-weight: 400;
-        background-color: #f8fafc;
+        background-color: #FDFBF7;
         margin: 0;
-        color: #1e293b;
+        color: #1A1A1A;
         -webkit-font-smoothing: antialiased;
       }
       
       h1 { font-family: 'Inter', sans-serif !important; font-size: 60px !important; line-height: 1.1; font-weight: 300; }
       h2 { font-family: 'Inter', sans-serif !important; font-size: 40px !important; line-height: 1.2; font-weight: 300; }
       h3 { font-family: 'Inter', sans-serif !important; font-size: 21px !important; line-height: 1.3; font-weight: 500; }
-
+ 
       .btn-primary {
         background-color: var(--color-primary);
         color: #FFFFFF;
         font-size: 15px;
         font-weight: 500;
         transition: all 0.2s ease;
-        border-radius: 9999px;
+        border-radius: 4px;
         border: none;
         cursor: pointer;
         padding: 18px 36px;
@@ -46,8 +106,6 @@
       }
       .btn-primary:hover {
         background-color: var(--color-primary-hover);
-        transform: translateY(-1px);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
       }
 
       /* Custom Slider Styles */
@@ -76,7 +134,7 @@
       #app-init-loader {
         position: fixed;
         inset: 0;
-        background: #f8fafc;
+        background: #FDFBF7;
         display: flex;
         flex-direction: column;
         align-items: center;

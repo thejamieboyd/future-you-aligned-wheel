@@ -113,7 +113,7 @@ const RadarChartSVG = ({ data, size = 420 }: { data: CategoryData[], size?: numb
           cy={center} 
           r={r} 
           fill="none" 
-          stroke="#e2e8f0" 
+          stroke="#C8DFF0" 
           strokeWidth="1" 
           strokeDasharray={val === 10 ? 'none' : '4 4'}
         />
@@ -121,7 +121,7 @@ const RadarChartSVG = ({ data, size = 420 }: { data: CategoryData[], size?: numb
           <text 
             x={center + 4} 
             y={center - r + 3} 
-            fill="#94a3b8" 
+            fill="#5C6670" 
             fontSize="8px" 
             fontWeight="bold"
             className="font-mono select-none"
@@ -153,13 +153,13 @@ const RadarChartSVG = ({ data, size = 420 }: { data: CategoryData[], size?: numb
 
     return (
       <g key={`axis-${i}`}>
-        <line x1={center} y1={center} x2={pEnd.x} y2={pEnd.y} stroke="#cbd5e1" strokeWidth="1" />
+        <line x1={center} y1={center} x2={pEnd.x} y2={pEnd.y} stroke="#C8DFF0" strokeWidth="1" />
         <text
           x={pLabel.x}
           y={pLabel.y}
           textAnchor={anchor}
           dominantBaseline={baseline}
-          fill="#334155"
+          fill="#1A1A1A"
           fontSize="11px"
           fontWeight="600"
           className="font-sans select-none tracking-tight max-w-[80px]"
@@ -185,19 +185,19 @@ const RadarChartSVG = ({ data, size = 420 }: { data: CategoryData[], size?: numb
       {/* Background Grids */}
       {grids}
       {/* Outer Circle Label */}
-      <circle cx={center} cy={center} r={radius} fill="none" stroke="#DCA54A" strokeWidth="1.5" opacity="0.3" />
+      <circle cx={center} cy={center} r={radius} fill="none" stroke="#4A90C4" strokeWidth="1.5" opacity="0.3" />
       
       {/* Axes */}
       {axes}
       
-      {/* Importance Shape (Orange/Gold - Subtle Stroke & Semi-Transparent Fill) */}
+      {/* Importance Shape (Accent Light - Subtle Stroke & Semi-Transparent Fill) */}
       {importancePoints && (
         <g>
           <polygon
             points={importancePoints}
-            fill="#f97316"
-            fillOpacity="0.06"
-            stroke="#f97316"
+            fill="#F0F6FA"
+            fillOpacity="0.5"
+            stroke="#4A90C4"
             strokeWidth="2.5"
             strokeDasharray="4 2"
             style={{ transition: 'all 0.5s ease-in-out' }}
@@ -211,7 +211,7 @@ const RadarChartSVG = ({ data, size = 420 }: { data: CategoryData[], size?: numb
                 cy={p.y} 
                 r="4.5" 
                 fill="#fff" 
-                stroke="#f97316" 
+                stroke="#4A90C4" 
                 strokeWidth="2.5" 
                 style={{ transition: 'all 0.5s ease-in-out' }}
               />
@@ -220,14 +220,14 @@ const RadarChartSVG = ({ data, size = 420 }: { data: CategoryData[], size?: numb
         </g>
       )}
 
-      {/* Satisfaction Shape (Sky Blue - Solid Fill with Stroke) */}
+      {/* Satisfaction Shape (Accent - Solid Fill with Stroke) */}
       {satisfactionPoints && (
         <g>
           <polygon
             points={satisfactionPoints}
-            fill="#0ea5e9"
-            fillOpacity="0.28"
-            stroke="#0ea5e9"
+            fill="#4A90C4"
+            fillOpacity="0.25"
+            stroke="#4A90C4"
             strokeWidth="3"
             style={{ transition: 'all 0.5s ease-in-out' }}
           />
@@ -240,7 +240,7 @@ const RadarChartSVG = ({ data, size = 420 }: { data: CategoryData[], size?: numb
                 cy={p.y} 
                 r="4.5" 
                 fill="#fff" 
-                stroke="#0ea5e9" 
+                stroke="#4A90C4" 
                 strokeWidth="2.5" 
                 style={{ transition: 'all 0.5s ease-in-out' }}
               />
@@ -502,16 +502,16 @@ export default function App() {
   const currentStep = STEPS[currentStepIndex];
 
   return (
-    <div className="min-h-screen bg-[#fafbfe] flex flex-col font-['Poppins'] text-[15px] text-slate-700 antialiased">
+    <div className="min-h-screen bg-[#FDFBF7] flex flex-col text-[15px] text-[#1A1A1A] antialiased">
       {/* Global Banner and Nav - Hidden on print */}
-      <header className="bg-white border-b border-slate-200/80 sticky top-0 z-40 no-print shadow-xs">
+      <header className="bg-white border-b border-slate-200/80 sticky top-0 z-40 no-print">
         <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-3">
-            <div className="bg-[#DCA54A] text-white p-2.5 rounded-2xl flex items-center justify-center shadow-sm">
+            <div className="bg-[#4A90C4] text-white p-2.5 rounded-2xl flex items-center justify-center">
               <Target size={20} strokeWidth={2.2} />
             </div>
             <div>
-              <h1 className="text-slate-900 tracking-tight font-['Inter'] font-semibold text-lg leading-tight">
+              <h1 className="text-[#1A1A1A] tracking-tight font-['Inter'] font-semibold text-lg leading-tight">
                 The Aligned Wheel
               </h1>
               <p className="text-slate-400 text-[9px] tracking-widest font-bold uppercase font-sans">
@@ -525,17 +525,11 @@ export default function App() {
             {currentStepIndex > 0 && (
               <button 
                 onClick={() => setCurrentStepIndex(0)}
-                className="text-xs font-semibold text-slate-500 hover:text-[#DCA54A] flex items-center gap-1 bg-slate-50 hover:bg-slate-100 px-3 py-1.5 rounded-lg transition-all"
+                className="text-xs font-semibold text-slate-500 hover:text-[#4A90C4] flex items-center gap-1 bg-slate-50 hover:bg-slate-100 px-3 py-1.5 rounded-[4px] transition-all"
               >
                 Restart Guide
               </button>
             )}
-            <button 
-              onClick={() => window.print()}
-              className="text-xs font-semibold text-[#DCA54A] hover:bg-[#DCA54A]/5 flex items-center gap-1.5 border border-[#DCA54A]/30 px-3.5 py-1.5 rounded-lg transition-all"
-            >
-              <Printer size={14} /> Print Sheet
-            </button>
           </div>
         </div>
 
@@ -557,19 +551,19 @@ export default function App() {
                       }
                     }}
                     disabled={!isClickable}
-                    className={`flex items-center gap-2 px-3 py-1.5 rounded-full transition-all text-xs font-medium whitespace-nowrap shrink-0 ${
+                    className={`flex items-center gap-2 px-3 py-1.5 rounded-[4px] transition-all text-xs font-medium whitespace-nowrap shrink-0 ${
                       isCurrent 
-                        ? 'bg-[#DCA54A] text-white shadow-sm cursor-pointer' 
+                        ? 'bg-[#4A90C4] text-white cursor-pointer' 
                         : isPassed 
-                        ? 'text-[#DCA54A] bg-[#DCA54A]/5 hover:bg-[#DCA54A]/10 cursor-pointer' 
+                        ? 'text-[#4A90C4] bg-[#4A90C4]/5 hover:bg-[#4A90C4]/10 cursor-pointer' 
                         : 'text-slate-400 cursor-not-allowed opacity-60'
                     }`}
                   >
                     <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${
                       isCurrent 
-                        ? 'bg-white text-[#DCA54A]' 
+                        ? 'bg-white text-[#4A90C4]' 
                         : isPassed 
-                        ? 'bg-[#DCA54A] text-white' 
+                        ? 'bg-[#4A90C4] text-white' 
                         : 'bg-slate-200 text-slate-500'
                     }`}>
                       {isPassed ? <Check size={10} strokeWidth={3} /> : idx + 1}
@@ -590,7 +584,7 @@ export default function App() {
         <div className="mb-8 text-center max-w-3xl mx-auto no-print">
           {currentStepIndex > 0 && (
             <div className="animate-in fade-in duration-300">
-              <span className="text-[10px] uppercase font-bold text-[#DCA54A] tracking-widest font-sans">
+              <span className="text-[10px] uppercase font-bold text-[#4A90C4] tracking-widest font-sans">
                 Step {currentStepIndex + 1} of {STEPS.length}: {currentStep.label}
               </span>
               <h2 className="text-2xl sm:text-3xl font-['Inter'] font-semibold text-slate-800 tracking-tight mt-1 mb-2">
@@ -606,18 +600,14 @@ export default function App() {
           {/* 1. WELCOME SCREEN */}
           {currentStep.id === 'welcome' && (
             <div className="max-w-3xl mx-auto py-4 md:py-8 animate-in fade-in slide-in-from-bottom-8 duration-500">
-              <div className="bg-white rounded-[40px] border border-slate-200/80 p-8 sm:p-14 shadow-xs space-y-10 relative overflow-hidden">
+              <div className="bg-white rounded-[40px] border border-slate-200/80 p-8 sm:p-14 space-y-10 relative overflow-hidden">
                 
                 {/* Visual decoration */}
-                <div className="absolute top-0 right-0 w-48 h-48 bg-[#DCA54A]/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+                <div className="absolute top-0 right-0 w-48 h-48 bg-[#4A90C4]/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
                 
                 <header className="border-b border-slate-100 pb-8 relative">
-                  <div className="flex items-center gap-3 mb-4 text-[#DCA54A]">
-                    <Sparkles size={24} />
-                    <span className="font-sans font-bold text-xs uppercase tracking-widest text-[#DCA54A]">Welcome to Clarity</span>
-                  </div>
                   <h1 className="font-['Inter'] text-slate-900 tracking-tight mb-4 text-4xl sm:text-5xl lg:text-6xl font-light">
-                    The <span className="font-semibold text-[#DCA54A]">Aligned Wheel</span>
+                    The <span className="font-semibold text-[#4A90C4]">Aligned Wheel</span>
                   </h1>
                   <p className="text-lg text-slate-500 font-light italic font-serif">
                     A conscious alternative to the traditional "Wheel of Life"
@@ -629,7 +619,7 @@ export default function App() {
                     The traditional Wheel of Life is a powerful, time-tested tool that helps you see where you need to work. The Aligned Wheel is designed to build on that by helping you find the gap—so you can see where the real work needs to be done.
                   </p>
                   
-                  <div className="pl-6 border-l-3 border-[#DCA54A] py-2 bg-amber-50/30 rounded-r-2xl pr-4">
+                  <div className="pl-6 border-l-3 border-[#4A90C4] py-2 bg-[#F0F6FA]/30 rounded-r-2xl pr-4">
                     <p className="text-slate-800 font-medium font-['Inter']">
                       But here’s the reality of high achievement:
                     </p>
@@ -676,16 +666,16 @@ export default function App() {
                   onClick={() => setWheelType('life')}
                   className={`p-6 rounded-3xl border-2 text-left transition-all relative overflow-hidden group ${
                     wheelType === 'life' 
-                      ? 'border-[#DCA54A] bg-[#DCA54A]/5 ring-1 ring-[#DCA54A]/30' 
+                      ? 'border-[#4A90C4] bg-[#4A90C4]/5 ring-1 ring-[#4A90C4]/30' 
                       : 'border-slate-200 bg-white hover:border-slate-300'
                   }`}
                 >
                   <div className="flex justify-between items-start mb-4">
-                    <div className={`p-3 rounded-2xl ${wheelType === 'life' ? 'bg-[#DCA54A] text-white' : 'bg-slate-100 text-slate-500'}`}>
+                    <div className={`p-3 rounded-2xl ${wheelType === 'life' ? 'bg-[#4A90C4] text-white' : 'bg-slate-100 text-slate-500'}`}>
                       <User size={22} />
                     </div>
                     {wheelType === 'life' && (
-                      <span className="bg-[#DCA54A] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full">
+                      <span className="bg-[#4A90C4] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-[4px]">
                         Selected
                       </span>
                     )}
@@ -703,16 +693,16 @@ export default function App() {
                   onClick={() => setWheelType('business')}
                   className={`p-6 rounded-3xl border-2 text-left transition-all relative overflow-hidden group ${
                     wheelType === 'business' 
-                      ? 'border-[#DCA54A] bg-[#DCA54A]/5 ring-1 ring-[#DCA54A]/30' 
+                      ? 'border-[#4A90C4] bg-[#4A90C4]/5 ring-1 ring-[#4A90C4]/30' 
                       : 'border-slate-200 bg-white hover:border-slate-300'
                   }`}
                 >
                   <div className="flex justify-between items-start mb-4">
-                    <div className={`p-3 rounded-2xl ${wheelType === 'business' ? 'bg-[#DCA54A] text-white' : 'bg-slate-100 text-slate-500'}`}>
+                    <div className={`p-3 rounded-2xl ${wheelType === 'business' ? 'bg-[#4A90C4] text-white' : 'bg-slate-100 text-slate-500'}`}>
                       <Briefcase size={22} />
                     </div>
                     {wheelType === 'business' && (
-                      <span className="bg-[#DCA54A] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full">
+                      <span className="bg-[#4A90C4] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-[4px]">
                         Selected
                       </span>
                     )}
@@ -730,16 +720,16 @@ export default function App() {
                   onClick={() => setWheelType('blank')}
                   className={`p-6 rounded-3xl border-2 text-left transition-all relative overflow-hidden group ${
                     wheelType === 'blank' 
-                      ? 'border-[#DCA54A] bg-[#DCA54A]/5 ring-1 ring-[#DCA54A]/30' 
+                      ? 'border-[#4A90C4] bg-[#4A90C4]/5 ring-1 ring-[#4A90C4]/30' 
                       : 'border-slate-200 bg-white hover:border-slate-300'
                   }`}
                 >
                   <div className="flex justify-between items-start mb-4">
-                    <div className={`p-3 rounded-2xl ${wheelType === 'blank' ? 'bg-[#DCA54A] text-white' : 'bg-slate-100 text-slate-500'}`}>
+                    <div className={`p-3 rounded-2xl ${wheelType === 'blank' ? 'bg-[#4A90C4] text-white' : 'bg-slate-100 text-slate-500'}`}>
                       <Plus size={22} />
                     </div>
                     {wheelType === 'blank' && (
-                      <span className="bg-[#DCA54A] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full">
+                      <span className="bg-[#4A90C4] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-[4px]">
                         Selected
                       </span>
                     )}
@@ -782,15 +772,15 @@ export default function App() {
                           {idx + 1}
                         </span>
                         <input
-                          type="text"
-                          value={cat.name}
-                          onChange={(e) => handleUpdate(cat.id, 'name', e.target.value)}
-                          className="flex-grow bg-transparent text-sm font-semibold text-slate-700 border-b border-transparent focus:border-[#DCA54A] focus:outline-none focus:text-slate-900 pb-0.5 transition-colors min-w-0"
-                          placeholder="Category Name"
+                           type="text"
+                           value={cat.name}
+                           onChange={(e) => handleUpdate(cat.id, 'name', e.target.value)}
+                           className="flex-grow bg-transparent text-sm font-semibold text-slate-700 border-b border-transparent focus:border-[#4A90C4] focus:outline-none focus:text-slate-900 pb-0.5 transition-colors min-w-0"
+                           placeholder="Category Name"
                         />
                         <button
                           onClick={() => setInfoCategoryName(cat.name)}
-                          className="text-slate-400 hover:text-[#DCA54A] p-1.5 rounded-lg hover:bg-amber-50/50 transition-all shrink-0"
+                          className="text-slate-400 hover:text-[#4A90C4] p-1.5 rounded-lg hover:bg-[#F0F6FA]/50 transition-all shrink-0"
                           title="View category details & examples"
                         >
                           <Info size={14} />
@@ -807,21 +797,30 @@ export default function App() {
                   </div>
                 )}
 
-                <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between gap-4">
+                <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
                   <button 
-                    onClick={addCategory}
-                    className="flex items-center justify-center gap-2 border border-dashed border-slate-300 hover:border-[#DCA54A] text-slate-500 hover:text-[#DCA54A] font-semibold text-sm px-6 py-2.5 rounded-2xl transition-all"
+                    onClick={handleBack} 
+                    className="text-sm font-semibold text-slate-500 hover:text-slate-800 flex items-center gap-1.5 px-4 py-2 rounded-xl self-start sm:self-auto"
                   >
-                    <Plus size={16} /> Add Custom Sector
+                    <ArrowLeft size={16} /> Back to Welcome
                   </button>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto items-center">
+                    <button 
+                      onClick={addCategory}
+                      className="w-full sm:w-auto flex items-center justify-center gap-2 border border-dashed border-slate-300 hover:border-[#4A90C4] text-slate-500 hover:text-[#4A90C4] font-semibold text-sm px-6 py-2.5 rounded-2xl transition-all"
+                    >
+                      <Plus size={16} /> Add Custom Sector
+                    </button>
 
-                  <button 
-                    onClick={handleNext}
-                    disabled={categories.length < 3}
-                    className={`btn-primary ${categories.length < 3 ? 'opacity-50 cursor-not-allowed bg-slate-300' : ''}`}
-                  >
-                    Save & Next Step <ChevronRight size={16} className="ml-1" />
-                  </button>
+                    <button 
+                      onClick={handleNext}
+                      disabled={categories.length < 3}
+                      className={`btn-primary w-full sm:w-auto ${categories.length < 3 ? 'opacity-50 cursor-not-allowed bg-slate-300' : ''}`}
+                    >
+                      Save & Next Step <ChevronRight size={16} className="ml-1" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -831,15 +830,15 @@ export default function App() {
           {currentStep.id === 'satisfaction' && (
             <div className="max-w-4xl mx-auto animate-in fade-in duration-300 space-y-8">
               
-              <div className="bg-sky-50 border border-sky-100 rounded-3xl p-6 flex flex-col sm:flex-row items-start gap-4">
-                <div className="p-3 bg-sky-500 text-white rounded-2xl shrink-0">
+              <div className="bg-[#F0F6FA] border border-[#C8DFF0] rounded-3xl p-6 flex flex-col sm:flex-row items-start gap-4">
+                <div className="p-3 bg-[#4A90C4] text-white rounded-2xl shrink-0">
                   <Compass size={24} />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-sky-800 font-['Inter'] text-base">
+                  <h4 className="font-semibold text-[#4A90C4] font-['Inter'] text-base">
                     Auditing Satisfaction (Current Reality)
                   </h4>
-                  <p className="text-xs text-sky-700 mt-1 leading-relaxed">
+                  <p className="text-xs text-[#1A1A1A] mt-1 leading-relaxed">
                     Ask yourself: <strong>"How aligned and fulfilled does this sector feel right now?"</strong> <br />
                     1 is complete friction, anxiety, or neglect. 10 is clear alignment, deep flow, and high health. 
                     Be honest with yourself. There are no right answers.
@@ -861,7 +860,7 @@ export default function App() {
                     return (
                       <div 
                         key={cat.id} 
-                        className="bg-white border border-slate-200 rounded-[32px] p-6 shadow-xs hover:shadow-sm transition-all space-y-4"
+                        className="bg-white border border-slate-200 rounded-[32px] p-6 transition-all space-y-4"
                       >
                         <div className="flex justify-between items-start gap-4">
                           <div className="flex items-center gap-1.5 min-w-0">
@@ -870,13 +869,13 @@ export default function App() {
                             </span>
                             <button
                               onClick={() => setInfoCategoryName(cat.name)}
-                              className="text-slate-400 hover:text-sky-600 hover:bg-sky-50 p-1 rounded-lg transition-all shrink-0"
+                              className="text-slate-400 hover:text-[#3A7AB0] hover:bg-[#F0F6FA] p-1 rounded-lg transition-all shrink-0"
                               title="View definition & examples"
                             >
                               <Info size={13} />
                             </button>
                           </div>
-                          <span className="bg-sky-100 text-sky-800 text-sm font-black px-3.5 py-1 rounded-full font-mono shrink-0">
+                          <span className="bg-[#F0F6FA] text-[#4A90C4] text-sm font-black px-3.5 py-1 rounded-[4px] font-mono shrink-0">
                             {cat.satisfaction} / 10
                           </span>
                         </div>
@@ -888,7 +887,7 @@ export default function App() {
                             max="10" 
                             value={cat.satisfaction}
                             onChange={(e) => handleUpdate(cat.id, 'satisfaction', parseInt(e.target.value))}
-                            className="w-full h-2.5 rounded-lg bg-sky-100 accent-sky-500 cursor-pointer"
+                            className="w-full h-2.5 rounded-lg bg-[#F0F6FA] accent-[#4A90C4] cursor-pointer"
                           />
                           <SliderScale />
                         </div>
@@ -918,15 +917,15 @@ export default function App() {
           {currentStep.id === 'importance' && (
             <div className="max-w-4xl mx-auto animate-in fade-in duration-300 space-y-8">
               
-              <div className="bg-orange-50 border border-orange-100 rounded-3xl p-6 flex flex-col sm:flex-row items-start gap-4">
-                <div className="p-3 bg-orange-500 text-white rounded-2xl shrink-0">
+              <div className="bg-[#F0F6FA] border border-[#C8DFF0] rounded-3xl p-6 flex flex-col sm:flex-row items-start gap-4">
+                <div className="p-3 bg-[#4A90C4] text-white rounded-2xl shrink-0">
                   <Lightbulb size={24} />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-orange-800 font-['Inter'] text-base">
+                  <h4 className="font-semibold text-[#4A90C4] font-['Inter'] text-base">
                     Auditing Seasonal Importance (Next 90 Days Focus)
                   </h4>
-                  <p className="text-xs text-orange-700 mt-1 leading-relaxed">
+                  <p className="text-xs text-[#1A1A1A] mt-1 leading-relaxed">
                     Ask yourself: <strong>"How critical is focus on this area for my upcoming season (90 days)?"</strong> <br />
                     1 is low relevance or something that can safely sit in maintenance mode. 10 is an absolute critical focus area that demands active attention. 
                     <strong className="block mt-1">Pro Tip: Be selective. If every sector is a 10, nothing is. Aim for only 3–4 high-focus sectors (8-10).</strong>
@@ -937,7 +936,7 @@ export default function App() {
               {/* Urgency selection stats */}
               <div className="bg-white rounded-2xl p-4 border border-slate-100 flex items-center justify-between text-xs">
                 <span className="text-slate-500">Your Priority Counter:</span>
-                <span className={`px-3 py-1 rounded-full font-bold ${
+                <span className={`px-3 py-1 rounded-[4px] font-bold ${
                   priorityCount90Days <= 4 
                     ? 'bg-emerald-50 text-emerald-700' 
                     : priorityCount90Days <= 6 
@@ -954,7 +953,7 @@ export default function App() {
                   return (
                     <div 
                       key={cat.id} 
-                      className="bg-white border border-slate-200 rounded-[32px] p-6 shadow-xs hover:shadow-sm transition-all space-y-4"
+                      className="bg-white border border-slate-200 rounded-[32px] p-6 transition-all space-y-4"
                     >
                       <div className="flex justify-between items-start gap-4">
                         <div className="flex items-center gap-1.5 min-w-0">
@@ -963,13 +962,13 @@ export default function App() {
                           </span>
                           <button
                             onClick={() => setInfoCategoryName(cat.name)}
-                            className="text-slate-400 hover:text-orange-600 hover:bg-orange-50 p-1 rounded-lg transition-all shrink-0"
+                            className="text-slate-400 hover:text-[#3A7AB0] hover:bg-[#F0F6FA] p-1 rounded-lg transition-all shrink-0"
                             title="View definition & examples"
                           >
                             <Info size={13} />
                           </button>
                         </div>
-                        <span className="bg-orange-100 text-orange-800 text-sm font-black px-3.5 py-1 rounded-full font-mono shrink-0">
+                        <span className="bg-[#F0F6FA] text-[#4A90C4] text-sm font-black px-3.5 py-1 rounded-[4px] font-mono shrink-0">
                           {cat.importance} / 10
                         </span>
                       </div>
@@ -981,7 +980,7 @@ export default function App() {
                           max="10" 
                           value={cat.importance}
                           onChange={(e) => handleUpdate(cat.id, 'importance', parseInt(e.target.value))}
-                          className="w-full h-2.5 rounded-lg bg-orange-100 accent-orange-500 cursor-pointer"
+                          className="w-full h-2.5 rounded-lg bg-[#F0F6FA] accent-[#4A90C4] cursor-pointer"
                         />
                         <SliderScale />
                       </div>
@@ -1021,14 +1020,14 @@ export default function App() {
                   {/* High Contrast Color Legend */}
                   <div className="flex justify-center gap-8 mt-6 w-full border-t border-slate-100 pt-5">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-3.5 h-3.5 rounded-full bg-sky-500 border border-white shadow-xs"></div>
+                      <div className="w-3.5 h-3.5 rounded-[4px] bg-[#4A90C4]/25 border-2 border-[#4A90C4]"></div>
                       <div>
                         <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block leading-none">Satisfaction</span>
                         <span className="text-[10px] text-slate-400">Current Reality</span>
                       </div>
                     </div>
                     <div className="flex items-center gap-2.5">
-                      <div className="w-3.5 h-3.5 rounded-full bg-orange-500 border border-white shadow-xs"></div>
+                      <div className="w-3.5 h-3.5 rounded-[4px] bg-[#F0F6FA] border-2 border-dashed border-[#4A90C4]"></div>
                       <div>
                         <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block leading-none">Importance</span>
                         <span className="text-[10px] text-slate-400">90-Day Vision</span>
@@ -1039,8 +1038,8 @@ export default function App() {
 
                 {/* Conceptual breakdown text */}
                 <div className="lg:col-span-5 space-y-6">
-                  <div className="bg-[#DCA54A]/5 rounded-3xl p-6 border border-[#DCA54A]/10">
-                    <h3 className="font-['Inter'] font-semibold text-[#DCA54A] text-lg mb-2">
+                  <div className="bg-[#4A90C4]/5 rounded-3xl p-6 border border-[#4A90C4]/10">
+                    <h3 className="font-['Inter'] font-semibold text-[#4A90C4] text-lg mb-2">
                       How to Read Your Chart
                     </h3>
                     <p className="text-xs text-slate-600 leading-relaxed space-y-3">
@@ -1048,22 +1047,22 @@ export default function App() {
                     </p>
                     <ul className="space-y-3.5 mt-3 text-xs text-slate-600">
                       <li className="flex gap-2">
-                        <span className="text-sky-500 font-bold shrink-0">■</span>
-                        <span><strong>Blue Polygon (Satisfaction):</strong> Your daily energy, currently deployed and settled.</span>
+                        <span className="text-[#4A90C4] font-bold shrink-0">■</span>
+                        <span><strong>Solid Blue Polygon (Satisfaction):</strong> Your daily energy, currently deployed and settled.</span>
                       </li>
                       <li className="flex gap-2">
-                        <span className="text-orange-500 font-bold shrink-0">■</span>
-                        <span><strong>Orange Path (Importance):</strong> The seasonal gravity or demands of your goals.</span>
+                        <span className="text-[#4A90C4] font-bold shrink-0">▨</span>
+                        <span><strong>Dashed Outline (Importance):</strong> The seasonal gravity or demands of your goals.</span>
                       </li>
                       <li className="flex gap-2">
-                        <span className="text-amber-500 font-bold shrink-0">⚠</span>
-                        <span><strong>The Gaps:</strong> Any area where the orange outline peaks high above the blue shape is a frictional stress point that demands a strategic pivot.</span>
+                        <span className="text-[#4A90C4] font-bold shrink-0">⚠</span>
+                        <span><strong>The Gaps:</strong> Any area where the dashed outline peaks high above the solid shape is a frictional stress point that demands a strategic pivot.</span>
                       </li>
                     </ul>
                   </div>
 
                   <p className="text-xs text-slate-400 leading-relaxed italic">
-                    Note: If your blue layer is larger than the orange layer in certain spots, that means you are fully aligned, or even over-delivering relative to current needs!
+                    Note: If your Satisfaction shape covers the Importance shape in certain spots, that means you are fully aligned, or even over-delivering relative to current seasonal needs!
                   </p>
                 </div>
               </div>
@@ -1110,11 +1109,11 @@ export default function App() {
                   {topGaps.map((item, index) => (
                     <div 
                       key={item.id} 
-                      className="p-6 bg-orange-50 border-l-4 border-[#DCA54A] rounded-r-3xl shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative overflow-hidden"
+                      className="p-6 bg-[#F0F6FA] border-l-4 border-[#4A90C4] rounded-r-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative overflow-hidden"
                     >
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
-                          <span className="w-5 h-5 rounded-full bg-[#DCA54A] text-white font-mono text-[10px] font-bold flex items-center justify-center">
+                          <span className="w-5 h-5 rounded-full bg-[#4A90C4] text-white font-mono text-[10px] font-bold flex items-center justify-center">
                             {index + 1}
                           </span>
                           <h4 className="text-lg font-bold text-slate-800 font-['Inter']">
@@ -1122,12 +1121,12 @@ export default function App() {
                           </h4>
                         </div>
                         <p className="text-xs text-slate-600">
-                          Satisfaction score of <strong className="text-sky-600">{item.satisfaction}</strong> vs Seasonal Importance of <strong className="text-orange-600">{item.importance}</strong>.
+                          Satisfaction score of <strong className="text-[#4A90C4]">{item.satisfaction}</strong> vs Seasonal Importance of <strong className="text-[#4A90C4]">{item.importance}</strong>.
                         </p>
                       </div>
 
                       <div className="flex sm:flex-col items-end gap-2 shrink-0">
-                        <span className="bg-[#DCA54A]/10 text-[#DCA54A] font-black text-xs px-3.5 py-1.5 rounded-full font-mono tracking-wider border border-[#DCA54A]/20">
+                        <span className="bg-[#4A90C4]/10 text-[#4A90C4] font-black text-xs px-3.5 py-1.5 rounded-[4px] font-mono tracking-wider border border-[#4A90C4]/20">
                           GAP: +{item.gap}
                         </span>
                         <span className="text-[10px] text-slate-400 font-medium">Future You demands focus here</span>
@@ -1151,8 +1150,8 @@ export default function App() {
                               <div className="flex items-center gap-4 font-mono text-slate-500">
                                 <span>Sat: {item.satisfaction}</span>
                                 <span>Imp: {item.importance}</span>
-                                <span className={`font-bold px-2 py-0.5 rounded ${
-                                  item.gap > 0 ? 'bg-orange-50 text-[#DCA54A]' : 'bg-slate-100 text-slate-400'
+                                <span className={`font-bold px-2 py-0.5 rounded-[4px] ${
+                                  item.gap > 0 ? 'bg-[#F0F6FA] text-[#4A90C4]' : 'bg-slate-100 text-slate-400'
                                 }`}>
                                   Gap: {item.gap > 0 ? `+${item.gap}` : item.gap}
                                 </span>
@@ -1192,8 +1191,8 @@ export default function App() {
               <div className="grid gap-8">
                 
                 {/* 1. Friction */}
-                <div className="bg-white border border-slate-200 p-6 sm:p-8 rounded-[32px] shadow-xs space-y-3">
-                  <div className="flex items-center gap-2 text-amber-600">
+                <div className="bg-white border border-slate-200 p-6 sm:p-8 rounded-[32px] space-y-3">
+                  <div className="flex items-center gap-2 text-[#4A90C4]">
                     <AlertTriangle size={18} />
                     <label className="text-lg font-bold text-slate-800 font-['Inter']">1. The Friction</label>
                   </div>
@@ -1204,12 +1203,12 @@ export default function App() {
                     value={reflections.friction}
                     onChange={(e) => setReflections({ ...reflections, friction: e.target.value })}
                     placeholder="E.g., My career is taking 10/10 focus, leaving health as a huge friction point where I feel physically fatigued..."
-                    className="w-full min-h-[110px] p-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#DCA54A] focus:ring-1 focus:ring-[#DCA54A] transition-all text-sm font-sans"
+                    className="w-full min-h-[110px] p-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#4A90C4] focus:ring-1 focus:ring-[#4A90C4] transition-all text-sm font-sans"
                   />
                 </div>
 
                 {/* 2. Anchors */}
-                <div className="bg-white border border-slate-200 p-6 sm:p-8 rounded-[32px] shadow-xs space-y-3">
+                <div className="bg-white border border-slate-200 p-6 sm:p-8 rounded-[32px] space-y-3">
                   <div className="flex items-center gap-2 text-emerald-600">
                     <BookmarkCheck size={18} />
                     <label className="text-lg font-bold text-slate-800 font-['Inter']">2. The Anchors</label>
@@ -1221,12 +1220,12 @@ export default function App() {
                     value={reflections.anchors}
                     onChange={(e) => setReflections({ ...reflections, anchors: e.target.value })}
                     placeholder="E.g., My relationship with my partner is extremely stable, giving me a solid emotional foundation..."
-                    className="w-full min-h-[110px] p-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#DCA54A] focus:ring-1 focus:ring-[#DCA54A] transition-all text-sm font-sans"
+                    className="w-full min-h-[110px] p-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#4A90C4] focus:ring-1 focus:ring-[#4A90C4] transition-all text-sm font-sans"
                   />
                 </div>
 
                 {/* 3. Neglect */}
-                <div className="bg-white border border-slate-200 p-6 sm:p-8 rounded-[32px] shadow-xs space-y-3">
+                <div className="bg-white border border-slate-200 p-6 sm:p-8 rounded-[32px] space-y-3">
                   <div className="flex items-center gap-2 text-slate-600">
                     <TrendingUp size={18} />
                     <label className="text-lg font-bold text-slate-800 font-['Inter']">3. The Neglect</label>
@@ -1238,13 +1237,13 @@ export default function App() {
                     value={reflections.neglect}
                     onChange={(e) => setReflections({ ...reflections, neglect: e.target.value })}
                     placeholder="E.g., Fun and play have been zero. If I don't schedule recreation, I am risking serious creative burnout by next month..."
-                    className="w-full min-h-[110px] p-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#DCA54A] focus:ring-1 focus:ring-[#DCA54A] transition-all text-sm font-sans"
+                    className="w-full min-h-[110px] p-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#4A90C4] focus:ring-1 focus:ring-[#4A90C4] transition-all text-sm font-sans"
                   />
                 </div>
 
                 {/* 4. Shift */}
-                <div className="bg-white border border-slate-200 p-6 sm:p-8 rounded-[32px] shadow-xs space-y-3">
-                  <div className="flex items-center gap-2 text-sky-600">
+                <div className="bg-white border border-slate-200 p-6 sm:p-8 rounded-[32px] space-y-3">
+                  <div className="flex items-center gap-2 text-[#4A90C4]">
                     <Compass size={18} />
                     <label className="text-lg font-bold text-slate-800 font-['Inter']">4. The Shift</label>
                   </div>
@@ -1255,13 +1254,13 @@ export default function App() {
                     value={reflections.shift}
                     onChange={(e) => setReflections({ ...reflections, shift: e.target.value })}
                     placeholder="E.g., I will spend 15 minutes every Sunday meal-prepping simple healthy lunches so I don't order takeout during hectic weeks..."
-                    className="w-full min-h-[110px] p-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#DCA54A] focus:ring-1 focus:ring-[#DCA54A] transition-all text-sm font-sans"
+                    className="w-full min-h-[110px] p-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#4A90C4] focus:ring-1 focus:ring-[#4A90C4] transition-all text-sm font-sans"
                   />
                 </div>
 
                 {/* 5. Trade-off */}
-                <div className="bg-white border border-slate-200 p-6 sm:p-8 rounded-[32px] shadow-xs space-y-3">
-                  <div className="flex items-center gap-2 text-[#DCA54A]">
+                <div className="bg-white border border-slate-200 p-6 sm:p-8 rounded-[32px] space-y-3">
+                  <div className="flex items-center gap-2 text-[#4A90C4]">
                     <Target size={18} />
                     <label className="text-lg font-bold text-slate-800 font-['Inter']">5. The Trade-Off</label>
                   </div>
@@ -1272,7 +1271,7 @@ export default function App() {
                     value={reflections.tradeoff}
                     onChange={(e) => setReflections({ ...reflections, tradeoff: e.target.value })}
                     placeholder="E.g., I am pausing my community board commitments for the next 90 days to free up Saturday mornings for health/exercise..."
-                    className="w-full min-h-[110px] p-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#DCA54A] focus:ring-1 focus:ring-[#DCA54A] transition-all text-sm font-sans"
+                    className="w-full min-h-[110px] p-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#4A90C4] focus:ring-1 focus:ring-[#4A90C4] transition-all text-sm font-sans"
                   />
                 </div>
 
@@ -1299,7 +1298,7 @@ export default function App() {
                 {/* Print Banner */}
                 <div className="border-b-2 border-slate-900 pb-6 flex justify-between items-end">
                   <div>
-                    <h2 className="font-['Inter'] font-black text-[#DCA54A] text-2xl tracking-tight uppercase print:text-slate-900">
+                    <h2 className="font-['Inter'] font-black text-[#4A90C4] text-2xl tracking-tight uppercase print:text-slate-900">
                       The Aligned Wheel
                     </h2>
                     <p className="text-slate-500 text-xs font-bold uppercase tracking-widest font-sans">
@@ -1323,11 +1322,11 @@ export default function App() {
                     
                     <div className="flex justify-center gap-6 mt-4 w-full">
                       <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-sky-500"></div>
+                        <div className="w-3 h-3 rounded-[4px] bg-[#4A90C4]/25 border border-[#4A90C4]"></div>
                         <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Satisfaction</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-orange-500"></div>
+                        <div className="w-3 h-3 rounded-[4px] bg-[#F0F6FA] border border-dashed border-[#4A90C4]"></div>
                         <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Importance</span>
                       </div>
                     </div>
@@ -1346,10 +1345,10 @@ export default function App() {
                     ) : (
                       <div className="space-y-3.5">
                         {topGaps.map((item, i) => (
-                          <div key={item.id} className="p-4 bg-slate-50 border-l-3 border-[#DCA54A] rounded-r-2xl text-xs space-y-1 print:bg-white print:border-slate-300">
+                          <div key={item.id} className="p-4 bg-slate-50 border-l-3 border-[#4A90C4] rounded-r-2xl text-xs space-y-1 print:bg-white print:border-slate-300">
                             <div className="flex justify-between items-center">
                               <span className="font-bold text-slate-800 text-sm font-['Inter']">{i + 1}. {item.name}</span>
-                              <span className="bg-[#DCA54A] text-white text-[9px] font-bold px-2 py-0.5 rounded-full font-mono">
+                              <span className="bg-[#4A90C4] text-white text-[9px] font-bold px-2 py-0.5 rounded-[4px] font-mono">
                                 GAP: +{item.gap}
                               </span>
                             </div>
@@ -1381,7 +1380,7 @@ export default function App() {
                     
                     {/* Reflection 1 */}
                     <div className="p-5 border border-slate-150 rounded-2xl space-y-1 bg-slate-50/20 print:bg-white">
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-[#DCA54A]">1. The Friction (Tensions Identified)</span>
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-[#4A90C4]">1. The Friction (Tensions Identified)</span>
                       <p className="text-xs text-slate-700 leading-relaxed min-h-[40px]">
                         {reflections.friction || <em className="text-slate-400">No response recorded</em>}
                       </p>
@@ -1405,7 +1404,7 @@ export default function App() {
 
                     {/* Reflection 4 */}
                     <div className="p-5 border border-slate-150 rounded-2xl space-y-1 bg-slate-50/20 print:bg-white">
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-sky-600">4. The Shift (Next High-Leverage Micro-Action)</span>
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-[#4A90C4]">4. The Shift (Next High-Leverage Micro-Action)</span>
                       <p className="text-xs text-slate-700 leading-relaxed min-h-[40px]">
                         {reflections.shift || <em className="text-slate-400">No response recorded</em>}
                       </p>
@@ -1415,7 +1414,7 @@ export default function App() {
 
                   {/* Full width Reflection 5 */}
                   <div className="p-5 border border-slate-150 rounded-2xl space-y-1 bg-slate-50/20 print:bg-white">
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-orange-600">5. The Seasonal Trade-Off (What toadjust, pause or delegate)</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#4A90C4]">5. The Seasonal Trade-Off (What toadjust, pause or delegate)</span>
                     <p className="text-xs text-slate-700 leading-relaxed min-h-[40px]">
                       {reflections.tradeoff || <em className="text-slate-400">No response recorded</em>}
                     </p>
@@ -1444,19 +1443,19 @@ export default function App() {
                   </div>
                   <button 
                     onClick={() => window.print()} 
-                    className="flex items-center justify-center gap-2 bg-[#DCA54A] hover:bg-[#C08D38] text-white font-semibold text-sm px-8 py-3.5 rounded-full transition-all shrink-0 w-full sm:w-auto"
+                    className="flex items-center justify-center gap-2 bg-[#4A90C4] hover:bg-[#3A7AB0] text-white font-semibold text-sm px-8 py-3.5 rounded-[4px] transition-all shrink-0 w-full sm:w-auto"
                   >
                     <Printer size={16} /> Print Full Workbook
                   </button>
                 </div>
 
                 {/* MailerLite Lead Collection Form */}
-                <div className="bg-white rounded-[32px] border border-slate-200 p-8 sm:p-10 shadow-xs space-y-6 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-sky-50 rounded-full blur-3xl pointer-events-none"></div>
+                <div className="bg-white rounded-[32px] border border-slate-200 p-8 sm:p-10 space-y-6 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-40 h-40 bg-[#F0F6FA] rounded-full blur-3xl pointer-events-none"></div>
                   
-                  <div className="flex items-center gap-3 text-[#DCA54A]">
+                  <div className="flex items-center gap-3 text-[#4A90C4]">
                     <Mail size={22} />
-                    <span className="font-sans font-bold text-xs uppercase tracking-widest">Future You Newsletter Integration</span>
+                    <span className="font-sans font-bold text-xs uppercase tracking-widest">Jamie Boyd's Community Updates</span>
                   </div>
 
                   <div className="max-w-2xl">
@@ -1464,7 +1463,7 @@ export default function App() {
                       Subscribe for Live Workshops & Tools
                     </h3>
                     <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                      Enter your name and email to connect with <strong>MailerLite</strong>. You will receive our full 90-day alignment strategy worksheets, template guides, and exclusive, free invites to our monthly live alignment review workshops.
+                      Enter your name and email to connect with <strong>Jamie Boyd</strong>. You will receive our full 90-day alignment strategy worksheets, template guides, and exclusive, free invites to our monthly live alignment review workshops.
                     </p>
                   </div>
 
@@ -1474,14 +1473,14 @@ export default function App() {
                       <div className="space-y-1">
                         <h4 className="text-sm font-bold text-emerald-800 font-['Inter']">Successfully Joined!</h4>
                         <p className="text-xs text-emerald-700">
-                          Your address has been synced to our MailerLite list. Your exclusive Future You workshop materials are flying to your inbox!
+                          Your address has been successfully registered. Your exclusive Future You workshop materials are flying to your inbox!
                         </p>
                         <button 
                           onClick={() => {
                             localStorage.removeItem('aligned_wheel_newsletter_subscribed');
                             setSubscribeStatus('idle');
                           }}
-                          className="text-[11px] text-[#DCA54A] hover:underline font-bold pt-1.5 block"
+                          className="text-[11px] text-[#4A90C4] hover:underline font-bold pt-1.5 block"
                         >
                           Reset subscriber form
                         </button>
@@ -1498,7 +1497,7 @@ export default function App() {
                             value={subscriberName}
                             onChange={(e) => setSubscriberName(e.target.value)}
                             placeholder="Jamie"
-                            className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-[#DCA54A] text-sm"
+                            className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-[#4A90C4] text-sm"
                           />
                         </div>
                         <div className="space-y-1">
@@ -1509,7 +1508,7 @@ export default function App() {
                             value={subscriberEmail}
                             onChange={(e) => setSubscriberEmail(e.target.value)}
                             placeholder="jamie@example.com"
-                            className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-[#DCA54A] text-sm"
+                            className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-[#4A90C4] text-sm"
                           />
                         </div>
                       </div>
@@ -1522,7 +1521,7 @@ export default function App() {
                         <button
                           type="submit"
                           disabled={subscribeStatus === 'loading'}
-                          className="flex items-center justify-center gap-2 bg-[#DCA54A] hover:bg-[#C08D38] text-white font-semibold text-xs uppercase tracking-widest px-6 py-3 rounded-xl transition-all disabled:opacity-60"
+                          className="flex items-center justify-center gap-2 bg-[#4A90C4] hover:bg-[#3A7AB0] text-white font-semibold text-xs uppercase tracking-widest px-6 py-3 rounded-[4px] transition-all disabled:opacity-60"
                         >
                           {subscribeStatus === 'loading' ? (
                             <>
@@ -1530,11 +1529,11 @@ export default function App() {
                                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                               </svg>
-                              Syncing with Mailerlite...
+                              Syncing...
                             </>
                           ) : (
                             <>
-                              Subscribe with Mailerlite <ExternalLink size={14} />
+                              Subscribe for Workshops <ExternalLink size={14} />
                             </>
                           )}
                         </button>
@@ -1549,7 +1548,7 @@ export default function App() {
                   </button>
                   <button 
                     onClick={() => setCurrentStepIndex(1)}
-                    className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-[#DCA54A] transition-colors"
+                    className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-[#3A7AB0] transition-colors"
                   >
                     Adjust Categories & Restart Audit
                   </button>
@@ -1561,26 +1560,7 @@ export default function App() {
 
         </div>
 
-        {/* Global Page Footer Navigation Bar (Sticky bottom, hidden on print) */}
-        {currentStepIndex > 0 && currentStepIndex < STEPS.length - 1 && (
-          <footer className="mt-12 pt-6 border-t border-slate-200/60 flex flex-col sm:flex-row items-center justify-between gap-4 no-print bg-white/80 backdrop-blur-md p-4 rounded-2xl border">
-            <button 
-              onClick={handleBack}
-              className="w-full sm:w-auto flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-all font-semibold text-sm"
-            >
-              <ArrowLeft size={16} /> Previous Page
-            </button>
-            <div className="hidden md:block text-xs font-medium text-slate-400">
-              Page {currentStepIndex + 1} of {STEPS.length} — {currentStep.label}
-            </div>
-            <button 
-              onClick={handleNext}
-              className="w-full sm:w-auto flex items-center justify-center gap-1.5 bg-[#DCA54A] hover:bg-[#C08D38] text-white px-7 py-2.5 rounded-xl transition-all font-semibold text-sm shadow-xs"
-            >
-              Continue to {STEPS[currentStepIndex + 1].label} <ChevronRight size={16} />
-            </button>
-          </footer>
-        )}
+
 
       </main>
 
@@ -1606,7 +1586,7 @@ export default function App() {
 
               <div className="space-y-6">
                 <div className="flex items-center gap-3">
-                  <div className="bg-[#DCA54A]/10 text-[#DCA54A] p-2.5 rounded-2xl">
+                  <div className="bg-[#4A90C4]/10 text-[#4A90C4] p-2.5 rounded-2xl">
                     <Info size={22} />
                   </div>
                   <div>
@@ -1636,7 +1616,7 @@ export default function App() {
                     <ul className="space-y-2">
                       {meta.examples.map((ex, i) => (
                         <li key={i} className="flex items-start gap-2.5 text-xs text-slate-600 leading-relaxed">
-                          <span className="text-[#DCA54A] mt-0.5 shrink-0 font-bold">•</span>
+                          <span className="text-[#4A90C4] mt-0.5 shrink-0 font-bold">•</span>
                           <span>{ex}</span>
                         </li>
                       ))}
@@ -1647,7 +1627,7 @@ export default function App() {
                 <div className="pt-4 border-t border-slate-100 flex justify-end">
                   <button 
                     onClick={() => setInfoCategoryName(null)}
-                    className="bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs px-6 py-3 rounded-xl transition-all"
+                    className="bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs px-6 py-3 rounded-[4px] transition-all"
                   >
                     Got it, thanks!
                   </button>
